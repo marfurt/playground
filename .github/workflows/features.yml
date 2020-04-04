@@ -1,7 +1,7 @@
 name: Feature Pull Requests
 
 on:
-  pull_requests:
+  pull_request:
     branches:
       - 'feature/**'
 
@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Setup
         run: |
+          pwd
           bundle install
 
       - name: Run fastlane lane

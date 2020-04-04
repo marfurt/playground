@@ -1,0 +1,8 @@
+##
+## Stores information used across all fastlane tools used.
+## See https://docs.fastlane.tools/advanced/#appfile
+##
+
+app_identifier "com.example.app"
+apple_id ENV["APPLE_ID"]
+team_id ENV["TEAM_ID"]

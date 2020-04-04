@@ -1,0 +1,25 @@
+name: Feature Pull Requests
+
+on:
+  pull_requests:
+    - 'feature/**'
+
+jobs:
+  test:
+    name: Test application
+    runs-on: macOS-latest
+    steps:
+      - name: Setup
+        run: |
+          bundle install
+
+      - name: Run fastlane lane
+        env:
+          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          APP_ID: ${{ secrets.APP_ID }}
+          MATCH_USERNAME: ${{ secrets.MATCH_USERNAME }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          WORKSPACE: MyApp.xcworkspace
+        run: bundle exec fastlane test

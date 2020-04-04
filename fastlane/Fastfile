@@ -1,0 +1,55 @@
+##
+## Fastlane configuration
+## See https://docs.fastlane.tools
+##
+
+default_platform :ios
+
+platform :ios do
+
+	before_all do
+		#setup_ci(force: true)
+	end
+
+	desc "Tests"
+	lane :tests do
+		UI.success("Running tests lane…")
+	end
+
+	desc "Build"
+	lane :build do |options|
+		tests
+
+		UI.success("Running build lane…")
+
+		token = ENV["GITHUB_TOKEN"]
+        apple_id = ENV["APPLE_ID"]
+        team_id = ENV["TEAM_ID"]
+        app_id = ENV["APP_ID"]
+        match_username = ENV["MATCH_USERNAME"]
+        match_pwd = ENV["MATCH_PASSWORD"]
+        workspace = ENV["WORKSPACE"]
+
+		UI.message("Variables:
+		token = #{token}
+		apple_id = #{apple_id}
+		team_id = #{team_id}
+		app_id = #{app_id}
+		match_username = #{match_username}
+		match_pwd = #{match_pwd}
+		workspace = #{workspace}
+		")
+	end
+
+	desc "Beta"
+	lane :beta do
+		tests
+		UI.success("Running beta lane…")
+	end
+
+	desc "Release"
+	lane :release do
+		UI.success("Running release lane…")
+	end
+
+end

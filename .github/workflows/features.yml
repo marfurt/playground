@@ -2,7 +2,8 @@ name: Feature Pull Requests
 
 on:
   pull_requests:
-    - 'feature/**'
+    branches:
+      - 'feature/**'
 
 jobs:
   test:

@@ -1,18 +1,20 @@
-name: Feature Pull Requests
+name: Pull Requests
 
 on:
   pull_request:
     branches:
       - 'feature/**'
+      - 'hotfix/**'
 
 jobs:
   test:
-    name: Test application
     runs-on: macOS-latest
     steps:
+      - name: Checkout repository
+      - uses: actions/checkout@v2
+
       - name: Setup
         run: |
-          pwd
           bundle install
 
       - name: Run fastlane lane
